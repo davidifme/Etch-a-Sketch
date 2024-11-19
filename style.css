@@ -9,7 +9,6 @@ body {
     align-items: center;
     margin: auto;
     flex-wrap: wrap;
-    max-width: 420px;
 }
 
 #div-container div {
@@ -17,4 +16,8 @@ body {
     width: 25px;
     height: 25px;
     border: solid 0.5px white;
+}
+
+.btn {
+
 }
