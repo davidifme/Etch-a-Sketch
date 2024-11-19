@@ -1,23 +1,33 @@
-body {
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #494949;
 }
 
 #div-container {
+    height: 100%;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 1000px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
     flex-wrap: wrap;
 }
 
 #div-container div {
-    flex-shrink: 0;
     width: 25px;
     height: 25px;
-    border: solid 0.5px white;
+    border: solid 1px rgb(193, 193, 193);
 }
 
 .btn {
-
+    margin-bottom: 25px;
+    padding: 8px;
 }

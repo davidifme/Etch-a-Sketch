@@ -8,7 +8,7 @@ btn.addEventListener("click", () => {
         grid.remove();
     });
 
-    let maxGridSize = 50;
+    let maxGridSize = 25;
     let rowNumber = 0;
     let columnNumber = 0;
 
@@ -28,29 +28,36 @@ btn.addEventListener("click", () => {
                 continue;
             }
         } else {
-            alert('ERROR! The maximum grid size is 50.')
+            alert(`ERROR! The maximum grid size is ${maxGridSize}.`)
             continue;
         }
     }
 
     let rowsAndColumnsNumber = rowNumber * columnNumber;
 
+    let gridOpacity = 1;
+
     for (let index = 0; index < rowsAndColumnsNumber; index++) {
         const div = document.createElement("div");
-        
+
         div.addEventListener("mouseenter", () => {
-            div.style.backgroundColor = `${getRandomRGB()}`;
+            if (gridOpacity <= 1 && gridOpacity > 0) {
+                gridOpacity -= 0.1;
+                div.style.backgroundColor = `${getRandomRGB(gridOpacity)}`;
+            } else {
+                div.style.backgroundColor = "black";
+            }
         });
         divContainer.appendChild(div);
     }
 
-    let maxWidth = (columnNumber * 25) + 20;
-    divContainer.style.maxWidth = `${maxWidth}px`;
+    divContainer.style.width = `${columnNumber * 25 + (columnNumber - 1)}px`;
+    divContainer.style.height = `${rowNumber * 25 + (rowNumber - 1)}px`;
 });
 
-function getRandomRGB() {
+function getRandomRGB(opacity) {
     const r = Math.floor(Math.random() * 256); // Red value (0-255)
     const g = Math.floor(Math.random() * 256); // Green value (0-255)
     const b = Math.floor(Math.random() * 256); // Blue value (0-255)
-    return `rgb(${r}, ${g}, ${b})`; // Format as an RGB string
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`; // Format as an RGBA string
   }
