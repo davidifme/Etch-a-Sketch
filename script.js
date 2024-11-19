@@ -19,7 +19,7 @@ btn.addEventListener("click", () => {
         let userColumnNumberInput = prompt("Number of columns:");
 
         if (userRowNumberInput <= maxGridSize && userColumnNumberInput <= maxGridSize) {
-            if (userRowNumberInput >= 1 || userColumnNumberInput >= 1) {
+            if (userRowNumberInput > 0 && userColumnNumberInput > 0) {
                 rowNumber = userRowNumberInput;
                 columnNumber = userColumnNumberInput;
                 break;
@@ -37,8 +37,9 @@ btn.addEventListener("click", () => {
 
     for (let index = 0; index < rowsAndColumnsNumber; index++) {
         const div = document.createElement("div");
-        div.addEventListener("mousemove", () => {
-            div.style.backgroundColor = "white";
+        
+        div.addEventListener("mouseenter", () => {
+            div.style.backgroundColor = `${getRandomRGB()}`;
         });
         divContainer.appendChild(div);
     }
@@ -46,3 +47,10 @@ btn.addEventListener("click", () => {
     let maxWidth = (columnNumber * 25) + 20;
     divContainer.style.maxWidth = `${maxWidth}px`;
 });
+
+function getRandomRGB() {
+    const r = Math.floor(Math.random() * 256); // Red value (0-255)
+    const g = Math.floor(Math.random() * 256); // Green value (0-255)
+    const b = Math.floor(Math.random() * 256); // Blue value (0-255)
+    return `rgb(${r}, ${g}, ${b})`; // Format as an RGB string
+  }
